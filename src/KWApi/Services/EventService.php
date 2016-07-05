@@ -129,6 +129,8 @@ class EventService extends AbstractService {
      * @param string $object
      * @param string $action
      * @param int $version
+     *
+     * @return KWApi\Models\Response Return response object
      */
     public function unsubscribe($object, $action, $version)
     {
