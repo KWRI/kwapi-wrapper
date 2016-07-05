@@ -25,14 +25,15 @@ class ApiUserService extends AbstractService
      * For creating new ApiUser, every new created ApiUser has isActive value 1 by default. ApiKey inputed must be unique.
      *
      * @param string $apiKey
+     * @param string $email
      * @param string $company
      * @param string $application
      *
      * @return KWApi\Models\Response Return response object
      */
-    public function create($apiKey, $company, $application)
+    public function create($apiKey, $email, $company, $application)
     {
-        return $this->post('api_users', compact('apiKey', 'company', 'application'));
+        return $this->post('api_users', compact('apiKey', 'email', 'company', 'application'));
     }
 
 
@@ -59,9 +60,9 @@ class ApiUserService extends AbstractService
      *
      * @return KWApi\Models\Response Return response object
      */
-    public function update($id, $apiKey, $company, $application)
+    public function update($id, $apiKey, $email, $company, $application)
     {
-        $params = compact('apiKey', 'company', 'application');
+        $params = compact('apiKey', 'email', 'company', 'application');
 
         return $this->send('PUT', 'api_users/' . $id, ['json' => $params]);
     }

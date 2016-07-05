@@ -29,7 +29,7 @@ abstract class AbstractService {
      *
      * @return KWApi\Models\Response Return response object
      */
-    public function send($method = 'GET', $url, $options = array())
+    protected function send($method = 'GET', $url, $options = array())
     {
 
         $response = new Response();
@@ -97,7 +97,7 @@ abstract class AbstractService {
      *
      * @return KWApi\Models\Response Return response object
      */
-    public function post($url, $params = array())
+    protected function post($url, $params = array())
     {
         return $this->send('POST', $url, ['form_params' => $params]);
     }
@@ -111,7 +111,7 @@ abstract class AbstractService {
      *
      * @return KWApi\Models\Response Return response object
      */
-    public function get($url, $query = array())
+    protected function get($url, $query = array())
     {
         return $this->send('GET', $url, ['query' => $query]);
     }
