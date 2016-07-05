@@ -34,7 +34,7 @@ class KWApi {
             $this->endPoint = $credential->getEndPoint();
         }
 
-        $this->httpClient = $guzzle = new HttpClient(['base_uri' => $this->endPoint]);;
+        $this->httpClient = new HttpClient(['base_uri' => $this->endPoint]);
         $this->credential = $credential;
 
     }
