@@ -89,7 +89,7 @@ class Response
      */
     public function isError()
     {
-        return $this->hasError();
+        return $this->isError;
     }
 
     /**

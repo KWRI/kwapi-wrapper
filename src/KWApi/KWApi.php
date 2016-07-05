@@ -59,11 +59,18 @@ class KWApi {
             return $this->initiatedServices[$className];
         }
 
-        if (method_exists($this, $method)) {
-            return call_user_func_array($method, $params);
-        }
+        throw new \BadMethodCallException('Call to undefined method '  . KWApi::class . '::'. $method.'()');
+    }
 
-        throw new \Exception('Call to undefined method '  . KWApi::class . '::'. $method.'()');
+ 
+    /**
+     * Get service endpoint
+     *
+     * @return string Returns endpoint
+     */
+    public function getEndPoint()
+    {
+        return $this->endPoint;
     }
 
 
