@@ -13,7 +13,7 @@ class EventService extends AbstractService {
      * @param int $version
      * @param string $jsonSchema
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function register($object, $action, $version, $jsonSchema)
     {
@@ -29,7 +29,7 @@ class EventService extends AbstractService {
      * @param int $version
      * @param string $endPoint
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function subscribe($object, $action, $version, $endPoint)
     {
@@ -45,7 +45,7 @@ class EventService extends AbstractService {
      * @param int $version
      * @param string $event     Event name
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function add($object, $action, $version, $event)
     {
@@ -58,7 +58,7 @@ class EventService extends AbstractService {
      *
      * @param int $page     Number of page to show
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function browse($page = null)
     {
@@ -72,7 +72,7 @@ class EventService extends AbstractService {
      *
      * @param int $id       EventID
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function read($id)
     {
@@ -85,7 +85,7 @@ class EventService extends AbstractService {
      *
      * @param int $eventId        Event ID
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function browseSubscriber($eventId)
     {
@@ -115,7 +115,7 @@ class EventService extends AbstractService {
      *
      * @param int $id   EventID
      * 
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function delete($id)
     {
@@ -130,7 +130,7 @@ class EventService extends AbstractService {
      * @param string $action
      * @param int $version
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function unsubscribe($object, $action, $version)
     {

@@ -8,7 +8,7 @@ class ApiUserService extends AbstractService
     /**
      * Show list of ApiUsers on system. Using pagination with size of 10 items every page.
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function browse($page = null)
     {
@@ -29,7 +29,7 @@ class ApiUserService extends AbstractService
      * @param string $company
      * @param string $application
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function create($apiKey, $email, $company, $application)
     {
@@ -42,7 +42,7 @@ class ApiUserService extends AbstractService
      *
      * @param int $id
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function read($id)
     {
@@ -58,7 +58,7 @@ class ApiUserService extends AbstractService
      * @param string $company
      * @param string $application
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function update($id, $apiKey, $email, $company, $application)
     {
@@ -73,7 +73,7 @@ class ApiUserService extends AbstractService
      *
      * @param int $id
      *
-     * @return KWApi\Models\Response  Return response object
+     * @return \KWApi\Models\Response  Return response object
      */
     public function toggle($id)
     {
@@ -86,7 +86,7 @@ class ApiUserService extends AbstractService
      *
      * @param int $id
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     public function delete($id)
     {

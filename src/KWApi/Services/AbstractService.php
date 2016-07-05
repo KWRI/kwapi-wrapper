@@ -27,7 +27,7 @@ abstract class AbstractService {
      * @param string $url Url to request
      * @param array $options Guzzle Http Client Request Options
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     protected function send($method = 'GET', $url, $options = array())
     {
@@ -101,7 +101,7 @@ abstract class AbstractService {
      * @param string $url  Url of API to call
      * @param array $params  Post form parameter
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     protected function post($url, $params = array())
     {
@@ -115,7 +115,7 @@ abstract class AbstractService {
      * @param string $url  Url of API to call
      * @param array $query  Post form parameter
      *
-     * @return KWApi\Models\Response Return response object
+     * @return \KWApi\Models\Response Return response object
      */
     protected function get($url, $query = array())
     {
