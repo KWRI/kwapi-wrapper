@@ -12,9 +12,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
      *
      * @var string
      */
-    protected $endPoint = 'http://localhost:8001/v1/';
+    protected $endPoint;
 
-    protected $apiKey = 'URfBjVp2IWU6/wPojAQqtAm7+Iugt94TGbpJMvLjgeg=';
+    protected $apiKey;
 
     protected $app;
 
@@ -26,6 +26,11 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
+        $config = require(__DIR__ . '/config.php');
+        
+        $this->apiKey = $config['apiKey'];
+        $this->endPoint = $config['endPoint'];
+
         if (! $this->app) {
             $this->app = $this->createApplication();
         }
@@ -39,6 +44,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function createApplication()
     {
+
         $credential = new Credential($this->apiKey);
         $credential->setEndPoint($this->endPoint);
         
