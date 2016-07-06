@@ -47,12 +47,6 @@ abstract class AbstractService {
             $response->setStatusCode($res->getStatusCode());
             $response->setBody(json_decode($res->getBody(), true));
 
-            // If status Code is not OK / 200
-            if ($res->getStatusCode() != 200) {
-                $response->hasError(true);
-                $response->setCause('InvalidResponseCode');
-            }
-
         // Something wrong 
         } catch (BadResponseException $e) {
             
@@ -70,26 +64,12 @@ abstract class AbstractService {
             // Connection Error
             $response->hasError(true);
             $response->setCause('ConnectionError');
-            if ($e->hasResponse()) {
-
-                $res = $e->getResponse();
-                $response->setBody($e->getMessage());
-
-            } elseif (isset($e->getHandlerContext()['error'])){
+            if (isset($e->getHandlerContext()['error'])){
                 // Example error: Message contains Failed to connect to localhost port 8001: Connection Refused
                 $response->setBody($e->getHandlerContext()['error']);
 
-            } else {
-
-                $response->setBody($e->getMessage());
             }
 
-        } catch (\Exception $e) {
-
-            // Unknown error exception
-            $response->setBody($e->getMessage());
-            $response->hasError(true);
-            $response->setCause('Unknown');
         }
 
         return $response;
@@ -103,7 +83,7 @@ abstract class AbstractService {
      *
      * @return \KWApi\Models\Response Return response object
      */
-    protected function post($url, $params = array())
+    public function post($url, $params = array())
     {
         return $this->send('POST', $url, ['form_params' => $params]);
     }
@@ -117,7 +97,7 @@ abstract class AbstractService {
      *
      * @return \KWApi\Models\Response Return response object
      */
-    protected function get($url, $query = array())
+    public function get($url, $query = array())
     {
         return $this->send('GET', $url, ['query' => $query]);
     }
