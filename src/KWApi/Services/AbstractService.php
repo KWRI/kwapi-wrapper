@@ -37,9 +37,7 @@ abstract class AbstractService {
         try {
             
             // Add apiKey to headers payload
-            if ($method != 'GET' ) {
-                $options['headers']['apiKey'] = $this->credential->getApiKey();
-            }
+            $options['headers']['apiKey'] = $this->credential->getApiKey();
 
             // Send API Payload
             $res = $this->httpClient->request($method, $url, $options);

@@ -1,6 +1,6 @@
 <?php
 
 return array(
-    'apiKey' => 'URfBjVp2IWU6/wPojAQqtAm7+Iugt94TGbpJMvLjgeg=',
+    'apiKey' => 'abc123',
     'endPoint' => 'http://localhost:8001/v1/'
 );

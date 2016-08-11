@@ -83,6 +83,10 @@ class ApiUserTest extends TestCase
 
     public function testToggle()
     {
+        $res = $this->app->apiUser()->create($this->testApiKey, $this->testEmail, $this->testCompany, $this->testApplication);
+        $this->apiKey = $this->testApiKey;
+        $this->app = $this->createApplication();
+        
         $res = $this->app->apiUser()->toggle(1);
 
         $this->assertInstanceOf('KWApi\\Models\\Response', $res);
