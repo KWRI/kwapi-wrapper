@@ -11,6 +11,8 @@ class Response
 
     private $cause;
 
+    private $statusCode;
+
 
 
     /**
