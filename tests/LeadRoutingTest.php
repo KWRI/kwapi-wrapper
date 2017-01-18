@@ -91,13 +91,15 @@ class LeadRoutingTest extends TestCase
             'hash' => 'hashkey'
         ];
 
-        $agentName = 'Test new agent name';
-        $agentId = 'test_new_agent_id' . time();
+        $kw_uid = 'test_new_agent_id' . time();
+        $agentFirstName = 'Test first name';
+        $agentLastName = 'Test Last name';
         $email = '2light.hidayah@gmail.com';
+        $active = true;
 
         $res = $this->createList($data);
 
-        $res = $this->leadRouting->createAgent($res->getBody()['id'], $agentName, $agentId, $email);
+        $res = $this->leadRouting->createAgent($res->getBody()['id'], $kw_uid, $agentFirstName, $agentLastName, $email, $active);
 
         $this->assertEquals(200, $res->getStatusCode());
         $this->deleteList($res->getBody()['id']);
@@ -113,8 +115,8 @@ class LeadRoutingTest extends TestCase
         ];
 
         $rows = [
-            ['name' => 'Test agent 1', 'agent_id' => 'test_agent_1_id' . time(), 'email' => '2light.hidayah@gmail.com'],
-            ['name' => 'Test agent 2', 'agent_id' => 'test_agent_2_id' . time(), 'email' => 'nurcahyo.hidayah@gmail.com']
+            ['kw_uid'=>'473'.time(),'first_name'=>'Test agent 1','last_name'=>'lastname','email' =>'test1@mail.com','active'=>1],
+            ['kw_uid'=>'123'.time(),'first_name'=>'Test agent 2','last_name'=>'lastname','email' =>'test2@mail.com','active'=>1],
         ];
 
         $id = $this->createList($data)->getBody()['id'];
@@ -133,8 +135,8 @@ class LeadRoutingTest extends TestCase
         ];
 
         $rows = [
-            ['name' => 'Test agent 1', 'agent_id' => 'test_agent_1_id' . time(), 'email' => '2light.hidayah@gmail.com'],
-            ['name' => 'Test agent 2', 'agent_id' => 'test_agent_2_id' . time(), 'email' => 'nurcahyo.hidayah@gmail.com']
+            ['kw_uid'=>'473'.time(),'first_name'=>'Test agent 1','last_name'=>'lastname','email' =>'test1@mail.com','active'=>1],
+            ['kw_uid'=>'123'.time(),'first_name'=>'Test agent 2','last_name'=>'lastname','email' =>'test2@mail.com','active'=>1],
         ];
 
         // create a list
@@ -201,8 +203,8 @@ class LeadRoutingTest extends TestCase
         ];
 
         $rows = [
-            ['name' => 'Test agent 1', 'agent_id' => 'test_agent_1_id' . time(), 'email' => '2light.hidayah@gmail.com'],
-            ['name' => 'Test agent 2', 'agent_id' => 'test_agent_2_id' . time(), 'email' => 'nurcahyo.hidayah@gmail.com']
+            ['kw_uid'=>'473'.time(),'first_name'=>'Test agent 1','last_name'=>'lastname','email' =>'test1@mail.com','active'=>1],
+            ['kw_uid'=>'123'.time(),'first_name'=>'Test agent 2','last_name'=>'lastname','email' =>'test2@mail.com','active'=>1],
         ];
 
 
@@ -225,9 +227,8 @@ class LeadRoutingTest extends TestCase
         ];
 
         $rows = [
-            ['name' => 'Test agent 1', 'agent_id' => 'test_agent_1_id' . time(), 'email' => '2light.hidayah@gmail.com'],
-            ['name' => 'Test agent 2', 'agent_id' => 'test_agent_2_id' . time(), 'email' => 'nurcahyo.hidayah@gmail.com']
-        ];
+            ['kw_uid'=>'473'.time(),'first_name'=>'Test agent 1','last_name'=>'lastname','email' =>'test1@mail.com','active'=>1],
+            ['kw_uid'=>'123'.time(),'first_name'=>'Test agent 2','last_name'=>'lastname','email' =>'test2@mail.com','active'=>1],        ];
 
 
         $listId = $this->createList($listData)->getBody()['id'];
@@ -249,9 +250,8 @@ class LeadRoutingTest extends TestCase
         ];
 
         $rows = [
-            ['name' => 'Test agent 1', 'agent_id' => 'test_agent_1_id' . time(), 'email' => '2light.hidayah@gmail.com'],
-            ['name' => 'Test agent 2', 'agent_id' => 'test_agent_2_id' . time(), 'email' => 'nurcahyo.hidayah@gmail.com']
-        ];
+            ['kw_uid'=>'473'.time(),'first_name'=>'Test agent 1','last_name'=>'lastname','email' =>'test1@mail.com','active'=>1],
+            ['kw_uid'=>'123'.time(),'first_name'=>'Test agent 2','last_name'=>'lastname','email' =>'test2@mail.com','active'=>1],        ];
 
 
         $listId = $this->createList($listData)->getBody()['id'];

@@ -77,15 +77,17 @@ class LeadRoutingService extends AbstractService
      * Create an Agent on specific list
      *
      * @param int $id       List ID
-     * @param string $name      Agent name
-     * @param string $agent_id  Agent identifier
+     * @param string $kw_uid
+     * @param string $first_name      Agent First Name
+     * @param string $last_name  Agent Last Name
      * @param string $email     Agent email address
+     * @param boolean $active
      *
      * @return \KWApi\Models\Response
      */
-    public function createAgent($id, $name, $agent_id, $email)
+    public function createAgent($id, $kw_uid, $first_name, $last_name, $email, $active)
     {
-        return $this->post('lists/' . $id . '/agents', compact('name', 'agent_id', 'email'));
+        return $this->post('list/' . $id . '/agents', compact('kw_uid', 'first_name', 'last_name', 'email', 'active'));
     }
 
     /**
@@ -98,7 +100,7 @@ class LeadRoutingService extends AbstractService
      */
     public function createAgents($id, $data)
     {
-        return $this->post('lists/' . $id . '/agents/bulkadd', ['agents' => $data]);
+        return $this->post('list/' . $id . '/agents/bulkadd', ['agents' => $data]);
     }
 
     /**
@@ -149,7 +151,7 @@ class LeadRoutingService extends AbstractService
      */
     public function agents($listId, $queryData = array())
     {
-        return $this->get('lists/' . $listId . '/agents', $queryData);
+        return $this->get('list/' . $listId . '/agents', $queryData);
     }
 
     /**
@@ -162,7 +164,7 @@ class LeadRoutingService extends AbstractService
      */
     public function readAgent($listId, $agentId)
     {
-        return $this->get('lists/' . $listId . '/agents/' . $agentId);
+        return $this->get('list/' . $listId . '/agents/' . $agentId);
     }
 
 
@@ -176,7 +178,7 @@ class LeadRoutingService extends AbstractService
      */
     public function agentStats($listId, $agentId)
     {
-        return $this->get('lists/' . $listId . '/agents/' . $agentId . '/stats');
+        return $this->get('list/' . $listId . '/agents/' . $agentId . '/stats');
     }
 
 
@@ -190,7 +192,7 @@ class LeadRoutingService extends AbstractService
      */
     public function removeAgent($listId, $agentId)
     {
-        return $this->send('DELETE', 'lists/' . $listId . '/agents/' . $agentId);
+        return $this->send('DELETE', 'list/' . $listId . '/agents/' . $agentId);
     }
 
     /**
