@@ -80,13 +80,14 @@ class LeadRoutingService extends AbstractService
      * @param string $name      Agent name
      * @param string $kw_uid    Agent identifier
      * @param string $email     Agent email address
+     * @param boolean $active   Agent state (default to active)
      *
      * @return \KWApi\Models\Response
      */
-    public function createAgent($id, $name, $kw_uid, $email)
+    public function createAgent($id, $name, $kw_uid, $email, $active = true)
     {
         list($first_name, $last_name) = explode(' ', $name);
-        return $this->post('list/' . $id . '/agents', compact('first_name', 'last_name', 'kw_uid', 'email'));
+        return $this->post('list/' . $id . '/agents', compact('first_name', 'last_name', 'kw_uid', 'email', 'active'));
     }
 
     /**
@@ -107,8 +108,14 @@ class LeadRoutingService extends AbstractService
             }
 
             if (isset($agent['agent_id'])) {
-                $agent['kw_uid'] = $agent['kw_uid'];
+                $agent['kw_uid'] = $agent['agent_id'];
             }
+
+            if (!isset($agent['active'])) {
+                $agent['active'] = true;
+            }
+
+            return $agent;
         },$data)]);
     }
 
@@ -187,7 +194,7 @@ class LeadRoutingService extends AbstractService
      */
     public function agentStats($listId, $agentId)
     {
-        return $this->get('lists/' . $listId . '/agents/' . $agentId . '/stats');
+        return $this->get('list/' . $listId . '/agents/' . $agentId . '/stats');
     }
 
 
@@ -201,7 +208,7 @@ class LeadRoutingService extends AbstractService
      */
     public function removeAgent($listId, $agentId)
     {
-        return $this->send('DELETE', 'lists/' . $listId . '/agents/' . $agentId);
+        return $this->send('DELETE', 'list/' . $listId . '/agents/' . $agentId);
     }
 
     /**
