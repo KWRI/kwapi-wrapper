@@ -78,14 +78,15 @@ class LeadRoutingService extends AbstractService
      *
      * @param int $id       List ID
      * @param string $name      Agent name
-     * @param string $agent_id  Agent identifier
+     * @param string $kw_uid    Agent identifier
      * @param string $email     Agent email address
      *
      * @return \KWApi\Models\Response
      */
-    public function createAgent($id, $name, $agent_id, $email)
+    public function createAgent($id, $name, $kw_uid, $email)
     {
-        return $this->post('lists/' . $id . '/agents', compact('name', 'agent_id', 'email'));
+        list($first_name, $last_name) = explode(' ', $name);
+        return $this->post('list/' . $id . '/agents', compact('first_name', 'last_name', 'kw_uid', 'email'));
     }
 
     /**
@@ -98,7 +99,17 @@ class LeadRoutingService extends AbstractService
      */
     public function createAgents($id, $data)
     {
-        return $this->post('lists/' . $id . '/agents/bulkadd', ['agents' => $data]);
+        return $this->post('list/' . $id . '/agents/bulkadd', ['agents' => array_map(function($agent){
+            if (isset($agent['name'])) {
+                list($first_name, $last_name) = explode(' ', $agent['name']);
+                $agent['first_name'] = $first_name;
+                $agent['last_name'] = $last_name;
+            }
+
+            if (isset($agent['agent_id'])) {
+                $agent['kw_uid'] = $agent['kw_uid'];
+            }
+        },$data)]);
     }
 
     /**
@@ -197,7 +208,7 @@ class LeadRoutingService extends AbstractService
      * Show list lead of routing list
      *
      * @param int $id           Lead ID
-     * @param int $queryData    
+     * @param int $queryData
      *
      * @return \KWApi\Models\Response
      */
