@@ -167,7 +167,7 @@ class LeadRoutingService extends AbstractService
      */
     public function agents($listId, $queryData = array())
     {
-        return $this->get('lists/' . $listId . '/agents', $queryData);
+        return $this->get('list/' . $listId . '/agents', $queryData);
     }
 
     /**
@@ -180,7 +180,7 @@ class LeadRoutingService extends AbstractService
      */
     public function readAgent($listId, $agentId)
     {
-        return $this->get('lists/' . $listId . '/agents/' . $agentId);
+        return $this->get('list/' . $listId . '/agents/' . $agentId);
     }
 
 
