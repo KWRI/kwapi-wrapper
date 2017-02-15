@@ -8,7 +8,7 @@ class LeadRoutingTest extends TestCase
 
     protected function setUp()
     {
-        parent::setUp();
+        parent::setUpOpenID();
         $this->leadRouting = $this->app->leadRouting();
     }
 
@@ -30,17 +30,17 @@ class LeadRoutingTest extends TestCase
 
         return $this->leadRouting->createList($name, $router, $hash);
     }
-    
+
     public function deleteList($id)
     {
         return $this->leadRouting->removeList($id);
     }
-     
+
     public function testCreateList()
-    {   
+    {
         $data = [
             'name' => 'Test create list name',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -53,11 +53,11 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test read list',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
         $res = $this->createList($data);
-        
+
         $res = $this->leadRouting->readList($res->getBody()['id']);
         $this->assertEquals(200, $res->getStatusCode());
         $this->deleteList($res->getBody()['id']);
@@ -67,7 +67,7 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test update list',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
         $newData = [
@@ -87,7 +87,7 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test create agent',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -108,7 +108,7 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test create agents',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -128,7 +128,7 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test assign lead',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -151,7 +151,7 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test list stats',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -168,7 +168,7 @@ class LeadRoutingTest extends TestCase
     {
         $data = [
             'name' => 'Test delete list',
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -181,7 +181,7 @@ class LeadRoutingTest extends TestCase
     {
         $listData = [
             'name' => 'Test list name' . time(),
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -196,7 +196,7 @@ class LeadRoutingTest extends TestCase
     {
         $listData = [
             'name' => 'Test list name' . time(),
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -220,7 +220,7 @@ class LeadRoutingTest extends TestCase
     {
         $listData = [
             'name' => 'Test list name' . time(),
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -244,7 +244,7 @@ class LeadRoutingTest extends TestCase
     {
         $listData = [
             'name' => 'Test list name' . time(),
-            'router' => 'RoundRobin', 
+            'router' => 'RoundRobin',
             'hash' => 'hashkey'
         ];
 
@@ -266,7 +266,7 @@ class LeadRoutingTest extends TestCase
 
     public function testLeads()
     {
-        
+
     }
 
 }

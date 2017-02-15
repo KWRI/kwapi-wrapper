@@ -10,7 +10,7 @@ use KWApi\Models\Credential;
 use KWApi\Models\Response;
 
 abstract class AbstractService {
-    
+
     protected $httpClient;
     protected $credential;
 
@@ -35,7 +35,7 @@ abstract class AbstractService {
         $response = new Response();
 
         try {
-            
+
             // Add apiKey to headers payload
             $options['headers']['apiKey'] = $this->credential->getApiKey();
 
@@ -45,17 +45,17 @@ abstract class AbstractService {
             $response->setStatusCode($res->getStatusCode());
             $response->setBody(json_decode($res->getBody(), true));
 
-        // Something wrong 
+        // Something wrong
         } catch (BadResponseException $e) {
-            
+
             // Bad Response Error
             $res = $e->getResponse();
-        
+
             $response->setStatusCode($res->getStatusCode());
             $response->setBody(json_decode($res->getBody(), true));
             $response->hasError(true);
             $response->setCause('BadRequest');
-            
+
 
         } catch (ConnectException $e) {
 
