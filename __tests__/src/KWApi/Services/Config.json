@@ -1,0 +1,4 @@
+{
+    "apiKey": "abc123",
+    "endPoint": "http://localhost:8000/v1/"
+}
