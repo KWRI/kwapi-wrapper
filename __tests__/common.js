@@ -1,4 +1,5 @@
-const BasePath = '../src/'
+'use strict';
+const BasePath = '../lib/'
 /* eslint-disable */
 const OpenIDToken = require(BasePath + 'KWApi/Models/OpenIDToken')
 

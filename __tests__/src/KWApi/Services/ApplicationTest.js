@@ -1,5 +1,6 @@
+'use strict';
 /* global Moxios, apiKey, endPoint,email, company, appName */
-const BasePath = '../../../../src/'
+const BasePath = '../../../../lib/'
 
 /* eslint-disable */
 const Credential = require(BasePath + 'KWApi/Models/Credential')

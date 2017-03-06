@@ -1,5 +1,6 @@
+'use strict';
 /* global Moxios, apiKey, endPoint,email, company, appName */
-const BasePath = '../../../../src/'
+const BasePath = '../../../../lib/'
 const md5 = require('blueimp-md5')
 
 // Token data
