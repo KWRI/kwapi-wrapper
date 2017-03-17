@@ -14,7 +14,7 @@ describe('Application Test', () => {
     credential.setEndPoint(endPoint)
     const apiUser = new KWAPI(credential).ApiUser()
 
-    xit('It should Success Construct Singleton Service', () => {
+    it('It should Success Construct Singleton Service', () => {
         apiUser.credential.apiKey.should
             .equal(new KWAPI(credential).ApiUser().credential.apiKey)
         apiUser.credential.endPoint.should

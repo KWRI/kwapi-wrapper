@@ -10,8 +10,6 @@ const KWAPI = require(BasePath + 'KWApi/')
 
 const credential = new Credential(apiKey)
 
-const assert = require('assert')
-
 const testApiKey = `${Math.floor(100000000 + (Math.random() * 900000000))}abc123`
 
 describe('ApiUserService', () => {
@@ -20,7 +18,7 @@ describe('ApiUserService', () => {
     const KwApi = new KWAPI(credential)
 
     describe('testRead()', () => {
-        xit('Should read an id from /api_users', (done) => {
+        it('Should read an id from /api_users', (done) => {
             const resultObj = {
                 id: 1,
                 apiKey: 'abc123',
@@ -30,84 +28,90 @@ describe('ApiUserService', () => {
             }
             KwApi.ApiUser().read(resultObj.id)
                 .then((response) => {
-                    response.id.should.equal(resultObj.id)
-                    response.apiKey.should.equal(resultObj.apiKey)
-                    response.company.should.equal(resultObj.company)
-                    response.application.should.equal(resultObj.application)
-                    response.email.should.equal(resultObj.email)
+                    response.status.should.equal(200)
+                    response.config.method.should.equal('GET')
+                    response.data.id.should.equal(resultObj.id)
+                    response.data.apiKey.should.equal(resultObj.apiKey)
+                    response.data.company.should.equal(resultObj.company)
+                    response.data.application.should.equal(resultObj.application)
+                    response.data.email.should.equal(resultObj.email)
                     done()
                 }).catch(err => done(err))
         })
     })
 
     describe('testCreate()', () => {
-        xit('Should create a new ApiUser', (done) => {
+        it('Should create a new ApiUser', (done) => {
             const resultObj = {
                 company: 'Refactory',
                 application: 'KW-CRM',
                 email: 'pholenkadi17@gmail.com',
                 isActive: 1,
             }
-
+            let createId
             KwApi.ApiUser().create(testApiKey, email, company, appName)
                 .then((response) => {
-                    response.apiKey.should.equal(testApiKey)
-                    response.company.should.equal(resultObj.company)
-                    response.application.should.equal(resultObj.application)
-                    response.email.should.equal(resultObj.email)
-                    response.isActive.should.equal(resultObj.isActive)
-                    response.updated_at.should.exist
-                    response.created_at.should.exist
-                    done()
+                    createId = response.data.id
+                    response.config.method.should.equal('POST')
+                    response.data.apiKey.should.equal(testApiKey)
+                    response.data.company.should.equal(resultObj.company)
+                    response.data.application.should.equal(resultObj.application)
+                    response.data.email.should.equal(resultObj.email)
+                    response.data.isActive.should.equal(resultObj.isActive)
                 })
+                .then(() => KwApi.ApiUser().delete(createId))
+                .then(() => { done() })
                 .catch(err => done(err))
         })
     })
 
     describe('testDelete()', () => {
-        xit('Could delete an ApiUser', (done) => {
-            let createId
+        it('Could delete an ApiUser', (done) => {
+            let createdId
             KwApi.ApiUser().create(testApiKey, email, company, appName)
+                .then((response) => { createdId = response.data.id })
+                .then(() => KwApi.ApiUser().delete(createdId))
                 .then((response) => {
-                    createId = response.id
-                    done()
-                }).catch(err => done(err))
-
-            KwApi.ApiUser().delete(createId)
-                .then((response) => {
-                    response.id.should.equal(createId)
-                    done()
+                    response.config.method.should.equal('DELETE')
+                    response.data.id.should.equal(createdId)
                 })
+                .then(() => { done() })
                 .catch(err => done(err))
         })
     })
 
     describe('testBrowseApiUserList()', () => {
-        xit('Could browse the existing ApiUser', (done) => {
+        it('Could browse the existing ApiUser', (done) => {
             KwApi.ApiUser().browse(1)
                 .then((response) => {
-                    assert.equal(typeof response.data, 'object')
+                    response.status.should.equal(200)
+                    response.config.method.should.equal('GET')
+                    response.data.should.be.a('object')
                     done()
                 }).catch(err => done(err))
         })
     })
 
     describe('testUpdate()', () => {
-        xit('Should update the ApiUser info', (done) => {
-            const createdId = 618
+        it('Should update the ApiUser info', (done) => {
+            let createdId
             const newEmail = `new${email}`
-            KwApi.ApiUser().update(createdId, testApiKey, newEmail, company, appName)
+            KwApi.ApiUser().create(testApiKey, email, company, appName)
+                .then((response) => { createdId = response.data.id })
+                .then(() => KwApi.ApiUser()
+                                .update(createdId, testApiKey, newEmail, company, appName))
                 .then((response) => {
-                    response.id.should.equal(createdId)
-                    response.apiKey.should.equal(testApiKey)
-                    response.company.should.equal(company)
-                    response.application.should.equal(appName)
-                    response.email.should.equal(newEmail)
-                    response.isActive.should.equal(1)
-                    response.updated_at.should.to.exist
-                    response.created_at.should.to.exist
-                    done()
-                }).catch(err => done(err))
+                    response.status.should.equal(200)
+                    response.data.id.should.equal(createdId)
+                    response.data.apiKey.should.equal(testApiKey)
+                    response.data.company.should.equal(company)
+                    response.data.application.should.equal(appName)
+                    response.data.email.should.equal(newEmail)
+                    response.data.isActive.should.equal(1)
+                })
+                .then(() => KwApi.ApiUser().delete(createdId))
+                .then(() => { done() })
+                .catch(err => done(err))
         })
     })
 })

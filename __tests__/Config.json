@@ -1,0 +1,4 @@
+{
+    "apiKey": "abc123",
+    "endPoint": "http://hydrogen-api-staging-1170247413.us-east-1.elb.amazonaws.com/v1/"
+}

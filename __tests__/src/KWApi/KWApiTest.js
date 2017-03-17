@@ -40,6 +40,7 @@ describe('KWAPI Test', () => {
         apiUser.ApiUser()
             .create(params.apiKey, params.email, params.company, params.application)
             .then((response) => {
+                //console.log(response)
                 const data = qs.parse(response.config.data)
                 expect(response.status).to.be.eq(200)
                 expect(response.config.method.toLowerCase()).to.be.eq('POST'.toLowerCase())

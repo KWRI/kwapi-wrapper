@@ -7,7 +7,7 @@ const OpenIDUserInfo = require(BasePath + 'KWApi/Models/OpenIDUserInfo')
 
 const OpenIDCredential = require(BasePath + 'KWApi/Models/OpenIDCredential')
 /* eslint-enable */
-const config = require('./src/KWApi/Services/Config.json')
+const config = require('./Config.json')
 
 global.apiKey = config.apiKey
 global.endPoint = config.endPoint
