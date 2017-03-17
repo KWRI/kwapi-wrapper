@@ -1,8 +1,8 @@
 {
-  "name": "kwapi-wrapper",
+  "name": "@refactory-id/kwapi-wrapper-js",
   "version": "0.1.0",
   "description": "kwapi Client library",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "istanbul cover ./node_modules/.bin/_mocha -- __tests__ --opts ./__tests__/mocha.opts --timeout 15000"
   },
