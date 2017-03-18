@@ -26,7 +26,7 @@ class GoogleApiServiceTest extends TestCase
             "token_type" => "Bearer",
             "expires_in"=>3600,
             "created"=>time()
-        ];        
+        ];
         $res = $this->googleApi->storeAccessToken('trm-kw@dev.kw.com', $accessToken);
 
         $this->assertEquals(200, $res->getStatusCode());
@@ -42,7 +42,7 @@ class GoogleApiServiceTest extends TestCase
     {
         $mails = $this->googleApi->mails('trm-kw@dev.kw.com');
 
-        $res = $this->googleApi->mailDetail( $mails->getBody()['messages'][0]['id'],'trm-kw@dev.kw.com');
+        $res = $this->googleApi->mailDetail( $mails->getBody()['messages']['response-1']['id'],'trm-kw@dev.kw.com');
         $this->assertEquals(200, $res->getStatusCode());
     }
 
