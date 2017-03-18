@@ -126,7 +126,7 @@ class GoogleApiService extends AbstractService
      */
     public function calendarSyncStop($email, $calendar_id)
     {
-        return $this->post('gcal/syn/stop', compact('email', 'calendar_id'));
+        return $this->post('gcal/sync/stop', compact('email', 'calendar_id'));
     }
 
     /**
