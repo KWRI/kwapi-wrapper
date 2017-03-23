@@ -1,5 +1,5 @@
 "use strict";
-/* global Moxios, apiKey, endPoint,email, company, appName */
+/* global apiKey, endPoint*/
 const BasePath = "../../../lib/";
 const chai = require("chai");
 const qs = require("qs");
@@ -48,6 +48,6 @@ describe("KWAPI Test", () => {
                 expect(data.email).to.be.eq(params.email);
                 expect(data.company).to.be.eq(params.company);
                 expect(data.application).to.be.eq(params.application);
-            }).catch(err => console.error(err));
+            }).catch(err => err);
     });
 });

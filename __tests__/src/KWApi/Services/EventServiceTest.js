@@ -76,7 +76,7 @@ describe("EventService", () => {
             };
 
             KwApi.Event().add(requestObject.object, requestObject.action, requestObject.version, requestObject.event)
-                 .then((response) => {
+                 .then(() => {
                     //  response.status.should.equal(200)
                     //  response.config.method.should.equal("POST")
                     //  response.data.object.should.equal(requestObject.object)

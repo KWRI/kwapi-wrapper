@@ -1,17 +1,17 @@
-var IncomingWebhook = require('@slack/client').IncomingWebhook;
+var IncomingWebhook = require("@slack/client").IncomingWebhook;
 
-var url = process.env.SLACK_WEBHOOK_URL || ''; //see section above on sensitive data
-const report = require('./coverage/coverage-summary.json').total
+var url = process.env.SLACK_WEBHOOK_URL || ""; //see section above on sensitive data
+const report = require("./coverage/coverage-summary.json").total;
 var webhook = new IncomingWebhook(url, {
-  username: 'JS Code Coverage',
-  iconEmoji: ':golfer:',
-  channel: 'activities'
+    username: "JS Code Coverage",
+    iconEmoji: ":golfer:",
+    channel: "activities"
 });
 
 webhook.send({
-    text: 'Code coverage result',
+    text: "Code coverage result",
     "attachments": [
-		{
+        {
             "color": "#36a64f",
             "title": "Code Coverage",
             "fields": [
@@ -41,4 +41,4 @@ webhook.send({
             "ts": new Date().getTime(),
         }
     ]
-})
+});

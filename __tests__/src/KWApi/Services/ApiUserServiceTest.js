@@ -1,5 +1,5 @@
 "use strict";
-/* global Moxios, apiKey, endPoint,email, company, appName */
+/* global apiKey, endPoint,email, company, appName */
 const BasePath = "../../../../lib/";
 
 /* eslint-disable */

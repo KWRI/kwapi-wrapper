@@ -1,5 +1,5 @@
 "use strict";
-/* global Moxios, apiKey, endPoint,email, company, appName */
+/* global endPoint,email, company, appName */
 const BasePath = "../../../../lib/";
 const md5 = require("blueimp-md5");
 
@@ -33,7 +33,6 @@ describe("LeadRoutingTest", () => {
 
     describe("testList()", () => {
         it("Should get list of IDs", (done) => {
-            let createdId;
             KwApi.LeadRouting().lists()
                 .then((result) => {
                     result.status.should.equal(200);
