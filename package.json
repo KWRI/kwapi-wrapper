@@ -1,0 +1,40 @@
+{
+  "name": "@kwri/kwapi-wrapper",
+  "version": "0.1.0",
+  "description": "kwapi Client library",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover ./node_modules/.bin/_mocha -- __tests__ --opts ./__tests__/mocha.opts --timeout 15000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "TBD"
+  },
+  "keywords": [
+    "kwapi-wrapper"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@slack/client": "^3.8.1",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "moxios": "^0.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "axios-mock-adapter": "^1.7.1",
+    "blueimp-md5": "^2.7.0",
+    "chai-shallow-deep-equal": "^1.4.4",
+    "jsonwebtoken": "^7.3.0",
+    "lodash": "^4.17.4",
+    "promise": "^7.1.1",
+    "qs": "^6.3.1",
+    "testdouble": "^1.11.2"
+  }
+}
