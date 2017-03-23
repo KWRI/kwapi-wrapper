@@ -1,5 +1,5 @@
 {
-  "name": "@refactory-id/kwapi-wrapper-js",
+  "name": "@kwri/kwapi-wrapper",
   "version": "0.1.0",
   "description": "kwapi Client library",
   "main": "index.js",
