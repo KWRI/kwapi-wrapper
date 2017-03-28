@@ -74,7 +74,7 @@ class GoogleApiService extends AbstractService
      */
     public function mailDetail($mailId, $email)
     {
-        return $this->get('google/mail/'.$mailId, ['email'=>$email]);
+        return $this->get('google/mail/' . $mailId, ['email' => $email]);
     }
 
     /**
