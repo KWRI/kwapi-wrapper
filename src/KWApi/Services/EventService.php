@@ -2,9 +2,8 @@
 
 namespace KWApi\Services;
 
-class EventService extends AbstractService {
-
-
+class EventService extends AbstractService
+{
     /**
      * Register is for publisher who want to dispatch information to other services or applications.
      *
@@ -17,7 +16,7 @@ class EventService extends AbstractService {
      */
     public function register($object, $action, $version, $jsonSchema)
     {
-        return $this->post('events/register', compact('object', 'action','version', 'jsonSchema'));
+        return $this->post('events/register', compact('object', 'action', 'version', 'jsonSchema'));
     }
 
 
@@ -33,7 +32,7 @@ class EventService extends AbstractService {
      */
     public function subscribe($object, $action, $version, $endPoint)
     {
-        return $this->post('events/subscribe', compact('object', 'action','version', 'endPoint'));
+        return $this->post('events/subscribe', compact('object', 'action', 'version', 'endPoint'));
     }
 
 
@@ -49,7 +48,7 @@ class EventService extends AbstractService {
      */
     public function add($object, $action, $version, $event)
     {
-        return $this->post('events/add', compact('object', 'action','version', 'event'));
+        return $this->post('events/add', compact('object', 'action', 'version', 'event'));
     }
 
 
@@ -114,7 +113,7 @@ class EventService extends AbstractService {
      * Delete an event by ID
      *
      * @param int $id   EventID
-     * 
+     *
      * @return \KWApi\Models\Response Return response object
      */
     public function delete($id)
@@ -125,7 +124,7 @@ class EventService extends AbstractService {
 
     /**
      * To be used by api user for unsubscribing event message data
-     * 
+     *
      * @param string $object
      * @param string $action
      * @param int $version
@@ -136,5 +135,4 @@ class EventService extends AbstractService {
     {
         return $this->post('events/unsubscribe', compact('object', 'action', 'version'));
     }
-
 }

@@ -68,13 +68,14 @@ class GoogleApiService extends AbstractService
     /**
      * Get Mail Detail
      *
-     * @param $email
      * @param $mailId
+     * @param $email
+     * @param array $fields
      * @return \KWApi\Models\Response
      */
-    public function mailDetail($mailId, $email)
+    public function mailDetail($mailId, $email, $fields = ['raw', 'id', 'labelIds', 'internalDate'])
     {
-        return $this->get('google/mail/' . $mailId, ['email' => $email]);
+        return $this->get('google/mail/' . $mailId, ['email' => $email, 'fields' => $fields]);
     }
 
     /**
@@ -140,11 +141,11 @@ class GoogleApiService extends AbstractService
      * @param null $sync_token
      * @return \KWApi\Models\Response
      */
-    public function eventList($email, $calendar_id, $time_max = null, $time_min=null, $page_token=null,$sync_token=null)
+    public function eventList($email, $calendar_id, $time_max = null, $time_min = null, $page_token = null, $sync_token = null)
     {
-        return $this->get('google/event',[
-            'email'=>$email, 'calendarId'=>$calendar_id,'timeMax'=>$time_max,
-            'timeMin'=> $time_min, 'pageToken' => $page_token, 'syncToken'=> $sync_token]);
+        return $this->get('google/event', [
+            'email' => $email, 'calendarId' => $calendar_id, 'timeMax' => $time_max,
+            'timeMin' => $time_min, 'pageToken' => $page_token, 'syncToken' => $sync_token]);
     }
 
     /**
@@ -159,9 +160,9 @@ class GoogleApiService extends AbstractService
      * @param null $attendees
      * @return \KWApi\Models\Response
      */
-    public function eventCreate($email,$summary,$start_date,$end_date,$description=null,$calendar_id=null,$attendees=null)
+    public function eventCreate($email, $summary, $start_date, $end_date, $description = null, $calendar_id = null, $attendees = null)
     {
-        return $this->post('google/event',[
+        return $this->post('google/event', [
             'email' => $email, 'summary' => $summary, 'startDate' => $start_date, 'endDate' => $end_date,
             'description' => $description, 'attendees' => $attendees, 'calendarId' => $calendar_id
         ]);
@@ -176,7 +177,7 @@ class GoogleApiService extends AbstractService
      */
     public function eventDetail($email, $event_id)
     {
-        return $this->get('google/event/'.$event_id, ['email'=>$email]);
+        return $this->get('google/event/'.$event_id, ['email' => $email]);
     }
 
     /**
@@ -192,8 +193,16 @@ class GoogleApiService extends AbstractService
      * @param null $calendar_id
      * @return \KWApi\Models\Response
      */
-    public function eventUpdate($event_id,$email,$summary=null,$start_date=null,$end_date=null,$description=null,$attendees=null,$calendar_id=null)
-    {
+    public function eventUpdate(
+        $event_id,
+        $email,
+        $summary = null,
+        $start_date = null,
+        $end_date = null,
+        $description = null,
+        $attendees = null,
+        $calendar_id = null
+    ) {
         return $this->post('google/event/'.$event_id, [
             'email' =>  $email, 'summary' => $summary, 'startDate' => $start_date, 'endDate' => $end_date,
             'description' => $description, 'attendees' => $attendees, 'calendarId' => $calendar_id, '_method'=>'PUT'
@@ -210,9 +219,8 @@ class GoogleApiService extends AbstractService
      */
     public function eventDelete($event_id, $email, $calendar_id = null)
     {
-        return $this->post('google/event/'.$event_id, [
+        return $this->post('google/event/' . $event_id, [
             'email' =>  $email, 'calendarId' => $calendar_id, '_method' => 'DELETE'
         ]);
     }
-
 }

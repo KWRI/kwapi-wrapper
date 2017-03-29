@@ -22,7 +22,7 @@ class GoogleApiServiceTest extends TestCase
     {
         $accessToken = [
             "access_token" => "ya29.Ci-gA72S2kvjOVBv9N0G09HZN6gmkp85MToOl5SvFSvbzjzQ9iBl3wAey5PnViPP_Q",
-            "refresh_token" => "1\/Goo-7l1Kd-DLnrA30K27pUggwvwbOGe99bXVtkRAtSE",
+            "refresh_token" => "1/Goo-7l1Kd-DLnrA30K27pUggwvwbOGe99bXVtkRAtSE",
             "token_type" => "Bearer",
             "expires_in"=>3600,
             "created"=>time()
