@@ -56,13 +56,13 @@ class GoogleApiService extends AbstractService
      * Get Mails
      *
      * @param $email
-     * @param $q
+     * @param $filter
      * @param $pageToken
      * @return \KWApi\Models\Response
      */
-    public function mails($email, $q = null, $pageToken = null)
+    public function mails($email, $filter = null, $pageToken = null)
     {
-        return $this->get("google/mail", ['email' => $email, 'filter' => $q, 'pageToken' => $pageToken]);
+        return $this->get("google/mail", ['email' => $email, 'filter' => $filter, 'pageToken' => $pageToken]);
     }
 
     /**

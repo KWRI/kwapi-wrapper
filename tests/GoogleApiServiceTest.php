@@ -68,10 +68,13 @@ class GoogleApiServiceTest extends TestCase
     {
         $email       =   'trm-kw@dev.kw.com';
         $calendar_id =   'trm-kw@dev.kw.com';
-        $endpoint    =   'test.latpat.com';
+        $endpoint    =   'https://google.com';
 
+        //Until use real https domain, validated by google, watch will be unable to create.
+        //Return will be response 400
         $res = $this->googleApi->calendarSyncWatch($email, $calendar_id, $endpoint);
-        $this->assertEquals(200, $res->getStatusCode());
+//        $this->assertEquals(200, $res->getStatusCode());
+        $this->assertEquals(400, $res->getStatusCode());
 
         $this->googleApi->calendarSyncStop($email, $calendar_id);
     }
@@ -80,7 +83,7 @@ class GoogleApiServiceTest extends TestCase
     {
         $email       =   'trm-kw@dev.kw.com';
         $calendar_id =   'trm-kw@dev.kw.com';
-        $endpoint    =   'test.latpat.com';
+        $endpoint    =   'https://test.latpat.com';
 
         $this->googleApi->calendarSyncWatch($email, $calendar_id, $endpoint);
 
@@ -152,6 +155,22 @@ class GoogleApiServiceTest extends TestCase
 
         $res = $this->googleApi->eventDelete($event->getBody()['event_id'], $email, $calendar_id);
         $this->assertEquals(200, $res->getStatusCode());
+    }
+
+    public function testMailsList()
+    {
+        $email       =   'trm-kw@dev.kw.com';
+        $mails = $this->googleApi->mails($email);
+        $this->assertEquals(200, $mails->getStatusCode());
+
+        $messages = $mails->getBody()['messages'];
+        $this->assertMailDetails(array_shift($messages)['id'], $email);
+    }
+
+    public function assertMailDetails($mailId, $email)
+    {
+        $mail = $this->googleApi->mailDetail($mailId, $email);
+        $this->assertEquals(200, $mail->getStatusCode());
     }
 
 }
