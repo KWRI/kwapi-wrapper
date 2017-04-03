@@ -1,6 +1,0 @@
-<?php
-
-return array(
-    'apiKey' => 'abc123',
-    'endPoint' => 'http://localhost:8001/v1/'
-);
