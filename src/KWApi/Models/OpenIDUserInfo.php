@@ -1,6 +1,6 @@
 <?php
 
-  namespace KWAPI\Models;
+  namespace KWApi\Models;
 
   /**
    *
@@ -11,14 +11,14 @@
     private $email;
     private $company;
     private $appName;
-    
+
     public function __construct($kwUid, $email, $company, $appName)
     {
       $this->kwUid = $kwUid;
       $this->email = $email;
       $this->company = $company;
       $this->appName = $appName;
-      
+
     }
 
     public function setKWUID($kwUid)

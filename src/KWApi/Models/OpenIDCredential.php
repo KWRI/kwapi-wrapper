@@ -1,5 +1,5 @@
 <?php
-  namespace KWAPI\Models;
+  namespace KWApi\Models;
 
   use GuzzleHttp\Client as HttpClient;
   use GuzzleHttp\Exception\BadResponseException;

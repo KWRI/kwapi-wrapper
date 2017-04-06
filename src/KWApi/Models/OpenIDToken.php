@@ -1,6 +1,6 @@
 <?php
 
-  namespace KWAPI\Models;
+  namespace KWApi\Models;
 
   /**
    *
