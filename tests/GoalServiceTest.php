@@ -15,7 +15,7 @@ class GoalServiceTest extends TestCase
     public function testGetGoal()
     {
         $res = $this->goal->getGoal('345');
-        $this->assertNotEquals(200, $res->getStatusCode());
+        $this->assertEquals(200, $res->getStatusCode());
     }
 
 }
