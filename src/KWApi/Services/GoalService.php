@@ -5,9 +5,9 @@ namespace KWApi\Services;
 class GoalService extends AbstractService
 {
     /**
-     * get the goal based on the given id
+     * get the goal based on the given goal id
      *
-     * @param int $id KW UID that will be sent
+     * @param int $goal_id KW UID that will be sent
      *
      * @return \KWApi\Models\Response Return response object
      */
