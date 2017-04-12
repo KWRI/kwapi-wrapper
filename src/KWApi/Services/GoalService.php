@@ -13,6 +13,6 @@ class GoalService extends AbstractService
      */
     public function getGoal($goal_id)
     {
-        return $this->get("goal/{$goal_id}");
+        return $this->get("goals/{$goal_id}");
     }
 }
