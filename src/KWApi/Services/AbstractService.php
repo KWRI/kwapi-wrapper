@@ -52,7 +52,12 @@ abstract class AbstractService {
             $res = $e->getResponse();
 
             $response->setStatusCode($res->getStatusCode());
-            $response->setBody(json_decode($res->getBody(), true));
+            $content = json_decode($res->getBody(), true);
+            // TODO: remove this once the response of goal api is fixed
+            if(is_string($content)) {
+                $content = json_decode($content, true);
+            }
+            $response->setBody($content);
             $response->hasError(true);
             $response->setCause('BadRequest');
 
