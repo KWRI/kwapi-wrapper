@@ -19,20 +19,29 @@ class GoogleApiService extends AbstractService
     /**
      * Backend connect
      * @param $redirect
+     * @param array $payload
      * @return \KWApi\Models\Response
      */
-    public function connect($redirect)
+    public function connect($redirect, $payload = [])
     {
-        return $this->get('connect/google', ['redirect' => $redirect]);
+        return $this->get('connect/google', ['redirect' => $redirect, 'payload' => $payload]);
     }
 
     /**
      * Backend Authenticate
+     *
+     * @param $accessToken
+     * @param $redirect
+     * @param array $payload
      * @return \KWApi\Models\Response
      */
-    public function authenticate($accessToken, $redirect)
+    public function authenticate($accessToken, $redirect, $payload = [])
     {
-        return $this->get('connect/authenticate', ['code' => $accessToken, 'redirect' => $redirect]);
+        return $this->get('connect/authenticate', [
+            'code' => $accessToken,
+            'redirect' => $redirect,
+            'payload' => $payload
+        ]);
     }
 
     /**
