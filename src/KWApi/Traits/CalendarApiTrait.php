@@ -51,11 +51,22 @@ trait CalendarApiTrait
      * @param null $sync_token
      * @return \KWApi\Models\Response
      */
-    public function eventList($email, $calendar_id, $time_max = null, $time_min = null, $page_token = null, $sync_token = null)
-    {
+    public function eventList(
+        $email,
+        $calendar_id,
+        $time_max = null,
+        $time_min = null,
+        $page_token = null,
+        $sync_token = null
+    ) {
         return $this->get('google/event', [
-            'email' => $email, 'calendarId' => $calendar_id, 'timeMax' => $time_max,
-            'timeMin' => $time_min, 'pageToken' => $page_token, 'syncToken' => $sync_token]);
+            'email' => $email,
+            'calendarId' => $calendar_id,
+            'timeMax' => $time_max,
+            'timeMin' => $time_min,
+            'pageToken' => $page_token,
+            'syncToken' => $sync_token
+        ]);
     }
 
     /**
@@ -70,11 +81,23 @@ trait CalendarApiTrait
      * @param null $attendees
      * @return \KWApi\Models\Response
      */
-    public function eventCreate($email, $summary, $start_date, $end_date, $description = null, $calendar_id = null, $attendees = null)
-    {
+    public function eventCreate(
+        $email,
+        $summary,
+        $start_date,
+        $end_date,
+        $description = null,
+        $calendar_id = null,
+        $attendees = null
+    ) {
         return $this->post('google/event', [
-            'email' => $email, 'summary' => $summary, 'startDate' => $start_date, 'endDate' => $end_date,
-            'description' => $description, 'attendees' => $attendees, 'calendarId' => $calendar_id
+            'email' => $email,
+            'summary' => $summary,
+            'startDate' => $start_date,
+            'endDate' => $end_date,
+            'description' => $description,
+            'attendees' => $attendees,
+            'calendarId' => $calendar_id
         ]);
     }
 
@@ -114,8 +137,14 @@ trait CalendarApiTrait
         $calendar_id = null
     ) {
         return $this->post('google/event/'.$event_id, [
-            'email' =>  $email, 'summary' => $summary, 'startDate' => $start_date, 'endDate' => $end_date,
-            'description' => $description, 'attendees' => $attendees, 'calendarId' => $calendar_id, '_method'=>'PUT'
+            'email' =>  $email,
+            'summary' => $summary,
+            'startDate' => $start_date,
+            'endDate' => $end_date,
+            'description' => $description,
+            'attendees' => $attendees,
+            'calendarId' => $calendar_id,
+            '_method' => 'PUT'
         ]);
     }
 

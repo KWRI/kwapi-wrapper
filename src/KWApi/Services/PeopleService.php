@@ -24,8 +24,8 @@ class PeopleService extends AbstractService
      *
      * @return \KWApi\Models\Response Return response object
      */
-    public function lookupPhone($phone, $countryCode='')
+    public function lookupPhone($phone, $countryCode = '')
     {
-        return $this->get('people/social/lookupPhone', compact('phone','countryCode'));
+        return $this->get('people/social/lookupPhone', compact('phone', 'countryCode'));
     }
 }

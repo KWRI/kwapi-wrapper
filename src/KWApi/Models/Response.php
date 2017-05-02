@@ -4,7 +4,6 @@ namespace KWApi\Models;
 
 class Response
 {
-
     private $isError = false;
 
     private $body;
@@ -12,8 +11,6 @@ class Response
     private $cause;
 
     private $statusCode;
-
-
 
     /**
      * Set response status code
@@ -103,5 +100,4 @@ class Response
     {
         return $this->cause;
     }
-
 }

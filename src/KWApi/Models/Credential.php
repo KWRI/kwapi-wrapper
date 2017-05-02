@@ -15,11 +15,9 @@ class Credential
     /**
      * Construct Credential model
      *
-     * @param string $apiKey API Key value
-     *
-     * @return void
+     * @param $apiKey
      */
-    public function __construct ($apiKey)
+    public function __construct($apiKey)
     {
         $this->apiKey = $apiKey;
     }
@@ -60,5 +58,4 @@ class Credential
     {
         return $this->apiKey;
     }
-
 }

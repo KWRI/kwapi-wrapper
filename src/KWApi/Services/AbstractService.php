@@ -6,10 +6,10 @@ use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ConnectException;
 
-use KWApi\Models\Credential;
 use KWApi\Models\Response;
 
-abstract class AbstractService {
+abstract class AbstractService
+{
 
     protected $httpClient;
     protected $credential;
@@ -52,7 +52,7 @@ abstract class AbstractService {
             if (is_string($content)) {
                 $content = json_decode($content, true);
             }
-
+            
             $response->setBody($content);
             $response->hasError(true);
             $response->setCause('BadRequest');
@@ -95,5 +95,4 @@ abstract class AbstractService {
     {
         return $this->send('GET', $url, ['query' => $query]);
     }
-
 }

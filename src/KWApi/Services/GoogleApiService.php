@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: abdulwahab
- * Date: 18/01/2017
- * Time: 10:30 AM
- */
-
 namespace KWApi\Services;
 
 use KWApi\Traits\MailApiTrait;

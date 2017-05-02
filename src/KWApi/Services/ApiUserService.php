@@ -68,7 +68,7 @@ class ApiUserService extends AbstractService
     }
 
     /**
-     * Set active status of ApiUser inverse from it current value. 
+     * Set active status of ApiUser inverse from it current value.
      * If isActive 0 then it will be set to 1, vice versa.
      *
      * @param int $id
