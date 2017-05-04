@@ -25,4 +25,14 @@ class PointOfInterestService extends AbstractService
     {
         return $this->get("places/validate", ['address' => $address]);
     }
+
+    /**
+     * Validate Address
+     * @param $address
+     * @return \KWApi\Models\Response
+     */
+    public function autocomplete($address)
+    {
+        return $this->get("places/autocomplete", ['address' => $address]);
+    }
 }
