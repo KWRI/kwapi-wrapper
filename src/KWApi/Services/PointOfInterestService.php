@@ -41,7 +41,7 @@ class PointOfInterestService extends AbstractService
      * @param $placeId
      * @return \KWApi\Models\Response
      */
-    public function details($placeId)
+    public function getDetails($placeId)
     {
         return $this->get("places/details", ['place_id' => $placeId]);
     }
