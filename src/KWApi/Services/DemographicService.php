@@ -12,7 +12,7 @@ class DemographicService extends AbstractService
      *      d_first         A first name
      *      d_last          A last name
      *      d_zip           A 5 digit zip code
-     *      d_fulladdr      Entire house number + street + suite 
+     *      d_fulladdr      Entire house number + street + suite
      *      d_city          A city in the USA
      *      d_state         Two letter state abbreviation
      *      d_phone         Ten digits NPANXXNNNN
@@ -26,5 +26,4 @@ class DemographicService extends AbstractService
     {
         return $this->get('demographics/get_demographics', $data);
     }
-
 }

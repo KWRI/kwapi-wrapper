@@ -6,10 +6,10 @@ use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ConnectException;
 
-use KWApi\Models\Credential;
 use KWApi\Models\Response;
 
-abstract class AbstractService {
+abstract class AbstractService
+{
 
     protected $httpClient;
     protected $credential;
@@ -31,11 +31,9 @@ abstract class AbstractService {
      */
     protected function send($method = 'GET', $url, $options = array())
     {
-
         $response = new Response();
 
         try {
-
             // Add apiKey to headers payload
             $options['headers']['apiKey'] = $this->credential->getApiKey();
 
@@ -44,35 +42,28 @@ abstract class AbstractService {
 
             $response->setStatusCode($res->getStatusCode());
             $response->setBody(json_decode($res->getBody(), true));
-
-        // Something wrong
         } catch (BadResponseException $e) {
-
             // Bad Response Error
             $res = $e->getResponse();
 
             $response->setStatusCode($res->getStatusCode());
             $content = json_decode($res->getBody(), true);
             // TODO: remove this once the response of goal api is fixed
-            if(is_string($content)) {
+            if (is_string($content)) {
                 $content = json_decode($content, true);
             }
+            
             $response->setBody($content);
             $response->hasError(true);
             $response->setCause('BadRequest');
-
-
         } catch (ConnectException $e) {
-
             // Connection Error
             $response->hasError(true);
             $response->setCause('ConnectionError');
-            if (isset($e->getHandlerContext()['error'])){
+            if (isset($e->getHandlerContext()['error'])) {
                 // Example error: Message contains Failed to connect to localhost port 8001: Connection Refused
                 $response->setBody($e->getHandlerContext()['error']);
-
             }
-
         }
 
         return $response;
@@ -104,5 +95,4 @@ abstract class AbstractService {
     {
         return $this->send('GET', $url, ['query' => $query]);
     }
-
 }

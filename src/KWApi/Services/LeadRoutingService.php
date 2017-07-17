@@ -256,5 +256,4 @@ class LeadRoutingService extends AbstractService
         $respond = $respondBool ? 1 : 0;
         return $this->get('leads/' . $leadId . '/respond_assignment', compact('respond'));
     }
-
 }
